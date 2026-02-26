@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Мой Документ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="header">
+  <div class="top-bar">
+    <span class="back-arrow">&#8249;</span> <!-- аккуратная стрелка -->
+    <h2>Удостоверение личности</h2>
+  </div>
+  <div class="switcher">
+    <button id="tab-doc" class="active">Документ</button>
+    <button id="tab-info">Реквизиты</button>
+    <div class="slider" id="slider"></div>
+  </div>
+</div>
+
+
+
+  <div id="page-doc" class="page active">
+    <img id="idImage" src="udee.png" alt="Удостоверение" />
+    <div class="btn-group">
+      <button class="blue-button" id="showQR">Предъявить документ</button>
+      <button class="outline-button">Отправить документ</button>
+    </div>
+  </div>
+
+  <div id="page-info" class="page">
+  <div class="info-block">
+    <div class="info-line">
+      <div class="info-text">
+        <p class="label">ФИО</p>
+        <p class="value">Габдулин Спандияр Маратович</p>
+      </div>
+      <img src="copy-icon.png" class="copy-icon" data-copy="Габдулин Спандияр Маратович" />
+    </div>
+
+    <div class="info-line">
+      <div class="info-text">
+        <p class="label">ИИН</p>
+        <p class="value">030905550370</p>
+      </div>
+      <img src="copy-icon.png" class="copy-icon" data-copy="030905550370" />
+    </div>
+
+    <div class="info-line">
+      <div class="info-text">
+        <p class="label">Дата рождения</p>
+        <p class="value">05.09.2003</p>
+      </div>
+      <img src="copy-icon.png" class="copy-icon" data-copy="05.09.2003" />
+    </div>
+
+    <div class="info-line">
+      <div class="info-text">
+        <p class="label">Номер документа</p>
+        <p class="value">059151918</p>
+      </div>
+      <img src="copy-icon.png" class="copy-icon" data-copy="059151918" />
+    </div>
+
+    <div class="info-line">
+      <div class="info-text">
+        <p class="label">Дата выдачи</p>
+        <p class="value">11.10.2024</p>
+      </div>
+      <img src="copy-icon.png" class="copy-icon" data-copy="11.10.2024" />
+    </div>
+
+    <div class="info-line">
+      <div class="info-text">
+        <p class="label">Срок действия</p>
+        <p class="value">10.10.2034</p>
+      </div>
+      <img src="copy-icon.png" class="copy-icon" data-copy="10.10.2034" />
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- ВСПЛЫВАЮЩЕЕ ОКНО С QR -->
+  <div class="bottom-sheet" id="qrSheet">
+    <div class="sheet-content">
+      <p class="sheet-title">Удостоверение личности</p>
+      <p class="sheet-subtitle">Покажите QR-код сотруднику</p>
+      <img src="qr-code-291583.png" class="qr-img" alt="QR-код">
+      <p class="sheet-subtext">или скажите код</p>
+      <p class="sheet-code">291583</p>
+    </div>
+  </div>
+
+  <script>
+    const tabDoc = document.getElementById("tab-doc");
+    const tabInfo = document.getElementById("tab-info");
+    const pageDoc = document.getElementById("page-doc");
+    const pageInfo = document.getElementById("page-info");
+    const slider = document.getElementById("slider");
+
+    tabDoc.onclick = () => {
+      tabDoc.classList.add("active");
+      tabInfo.classList.remove("active");
+      pageDoc.classList.add("active");
+      pageInfo.classList.remove("active");
+      slider.style.left = "0%";
+    };
+
+    tabInfo.onclick = () => {
+      tabInfo.classList.add("active");
+      tabDoc.classList.remove("active");
+      pageInfo.classList.add("active");
+      pageDoc.classList.remove("active");
+      slider.style.left = "50%";
+    };
+
+    document.getElementById("showQR").onclick = () => {
+      document.getElementById("qrSheet").classList.add("show");
+    };
+
+    document.getElementById("qrSheet").onclick = (e) => {
+      if (e.target.id === "qrSheet") {
+        e.currentTarget.classList.remove("show");
+      }
+    };
+  </script>
+</body>
+</html>
